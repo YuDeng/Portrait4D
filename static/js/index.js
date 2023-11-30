@@ -1,41 +1,5 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
-let INTERP_BASE = "./static/latent_interpolation/";
-let NUM_INTERP_FRAMES = 20;
-let NUM_INTERP_FRAMES_expr = 20;
-
-
-let interp_images_chair = [];
-let interp_images_car = [];
-function preloadInterpolationImages() {
-    for (let i = 0; i < NUM_INTERP_FRAMES_expr; i++) {
-        let path = INTERP_BASE + 'car/' + String(i).padStart(3, '0') + '.jpg';
-        interp_images_car[i] = new Image();
-        interp_images_car[i].src = path;
-        // interp_images_car[i].width = 256;
-    }
-    for (let i = 0; i < NUM_INTERP_FRAMES; i++) {
-        let path = INTERP_BASE + 'chair/' + String(i).padStart(3, '0') + '.jpg';
-        interp_images_chair[i] = new Image();
-        interp_images_chair[i].src = path;
-        // interp_images_chair[i].width = 256;
-    }
-}
-
-function setInterpolationImageChair(i) {
-  let image_chair = interp_images_chair[i];
-  image_chair.ondragstart = function() { return false; };
-  image_chair.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper-chair').empty().append(image_chair);
-}
-
-function setInterpolationImageCar(i) {
-  let image_car = interp_images_car[i];
-  image_car.ondragstart = function() { return false; };
-  image_car.oncontextmenu = function() { return false; };
-  $('#interpolation-image-wrapper-car').empty().append(image_car);
-}
-
 
 $(document).ready(function() {
     // Check for click events on the navbar burger icon
@@ -75,28 +39,7 @@ $(document).ready(function() {
     	});
     }
 
-    /*var player = document.getElementById('interpolation-video');
-    player.addEventListener('loadedmetadata', function() {
-      $('#interpolation-slider').on('input', function(event) {
-        console.log(this.value, player.duration);
-        player.currentTime = player.duration / 100 * this.value;
-      })
-    }, false);*/
-    preloadInterpolationImages();
-
-    $('#interpolation-slider-chair').on('input', function(event) {
-      setInterpolationImageChair(this.value);
-    });
-    setInterpolationImageChair(0);
-    $('#interpolation-slider-car').on('input', function(event) {
-      setInterpolationImageCar(this.value);
-    });
-    setInterpolationImageCar(0);
-
-    $('#interpolation-slider-chair').prop('max', NUM_INTERP_FRAMES - 1);
-    $('#interpolation-slider-car').prop('max', NUM_INTERP_FRAMES_expr - 1);
-
-    bulmaSlider.attach();
+    // bulmaSlider.attach();
 
 })
 
@@ -146,21 +89,6 @@ $(document).ready(function() {
       player.currentTime = player.duration / 100 * this.value;
     })
   }, false);*/
-  preloadInterpolationImages();
-
-  $('#interpolation-slider-chair').on('input', function(event) {
-    setInterpolationImageChair(this.value);
-  });
-  setInterpolationImageChair(0);
-  $('#interpolation-slider-car').on('input', function(event) {
-    setInterpolationImageCar(this.value);
-  });
-  setInterpolationImageCar(0);
-
-  $('#interpolation-slider-chair').prop('max', NUM_INTERP_FRAMES - 1);
-  $('#interpolation-slider-car').prop('max', NUM_INTERP_FRAMES_expr - 1);
-
-  bulmaSlider.attach();
 
 })
 
