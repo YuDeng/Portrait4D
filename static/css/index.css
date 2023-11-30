@@ -252,7 +252,7 @@ body {
 
 .hyper-space-cursor {
   width: 7%;
-  padding-bottom: calc(7% - 6px);
+  padding-bottom: calc(7% - 5px);
   background: rgb(143, 170, 220);
   border-radius: 50%;
   border: 3px solid #fff;
@@ -260,7 +260,7 @@ body {
 
 .hyper-space-cursor-shape {
   width: 7%;
-  padding-bottom: calc(7% - 6px);
+  padding-bottom: calc(7% - 5px);
   background: rgb(143, 170, 220);
   border-radius: 50%;
   border: 3px solid #fff;
