@@ -215,7 +215,7 @@ body {
 
 .hyper-space {
   width: 100%;
-  padding-bottom: calc(100% - 7%);
+  padding-bottom: calc(100% - 10%);
   box_sizing: border-box;
   touch-action: none;
 
@@ -225,7 +225,7 @@ body {
 
 .hyper-space-shape {
   width: 100%;
-  padding-bottom: calc(100% - 7%);
+  padding-bottom: calc(100% - 10%);
   box_sizing: border-box;
   touch-action: none;
 
@@ -251,16 +251,16 @@ body {
 }
 
 .hyper-space-cursor {
-  width: 7%;
-  padding-bottom: calc(7% - 5px);
+  width: 10%;
+  padding-bottom: calc(7.5%);
   background: rgb(143, 170, 220);
   border-radius: 50%;
   border: 3px solid #fff;
 }
 
 .hyper-space-cursor-shape {
-  width: 7%;
-  padding-bottom: calc(7% - 5px);
+  width: 10%;
+  padding-bottom: calc(7.5%);
   background: rgb(143, 170, 220);
   border-radius: 50%;
   border: 3px solid #fff;
