@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Learning One-Shot 4D Head Avatar Synthesis using Synthetic Data">
+  <meta name="keywords" content="one-shot, head avatar, 3D, animation, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portrait4D: Learning One-Shot 4D Head Avatar Synthesis using Synthetic Data</title>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+<script type="module"
+  src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/xiaobing_logo.jpg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="font-size:40px">Portrait4D: Learning One-Shot 4D Head Avatar Synthesis using Synthetic Data</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yudeng.github.io/">Yu Deng</a>,</span>
+            <span class="author-block">
+              <a href="https://dorniwang.github.io/">Duomin Wang</a>,</span>
+            <span class="author-block">
+              <a href="">Xiaohang Ren</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://seanchenxy.github.io/">Xingyu Chen</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/site/zjuwby/?pli=1">Baoyuan Wang</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Xiaobing.AI
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=8f1NBTdhvzw"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/YuDeng/Portrait-4D"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video poster="" id="00841" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/id00841.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="00773" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/id00773.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="00351" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/id00351.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="00548" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/id00548.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="00848" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/id00848.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item">
+          <video poster="" id="00653" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/id00653.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="00613" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/id00613.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="00558" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/id00558.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <h2 class="subtitle has-text-centered">
+      Portrait4D turns a monocular image into a photorealistic 4D head avatar via a simple feed-forward process.
+    </h2>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Existing one-shot 4D head synthesis methods usually learn from monocular videos with the aid of 3DMM reconstruction, 
+            yet the latter is evenly challenging which restricts them from reasonable 4D head synthesis. 
+            We present a method to learn one-shot 4D head synthesis via large-scale synthetic data. 
+            The key is to first learn a part-wise 4D generative model from monocular images via adversarial learning, 
+            to synthesize multi-view images of diverse identities and full motions as training data; 
+            then leverage a transformer-based animatable triplane reconstructor to learn 4D head reconstruction using the synthetic data. 
+            A novel learning strategy is enforced to enhance the generalizability to real images by disentangling the learning process of 3D reconstruction and reenactment. 
+            Experiments demonstrate our superiority over the prior art.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/8f1NBTdhvzw?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+<hr>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+
+      <!-- Overview. -->
+      <div class="column is-full-width">
+        <h2 class="title is-3">Overview</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/overview.png"
+          class="interpolation-image"
+          alt="Overview of our method."/>
+          <p>
+            For high-quality head avatar synthesis from a single image, we first learn a 4D generative head model from monocular images to synthesize large-scale 4D data of diverse identities, expressions, and poses.
+            Then, we utilize the synthetic data to learn a one-shot 4D head reconstruction model in a data-driven manner.
+          </p>
+        </div>
+      </div>
+      <!--/ Overview. -->
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+
+      <!-- Architecture. -->
+      <div class="column is-full-width">
+        <h2 class="title is-3">Architecture</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/framework.png"
+          class="interpolation-image"
+          alt="Architecture of the 4D head reconstruction model."/>
+          <p>
+            Architecture of our one-shot 4D head reconstruction model. An encoder E<font size="1">global</font> first extracts the appearance feature map of a source image I<font size="1">s</font>. The
+            feature map is then sent to a canonicalization and reenactment module Φ consisting of a de-expression module Φ<font size="1">de</font> and a reenactment module
+            Φ<font size="1">re</font> sharing the same structure, which receives motion features from either I<font size="1">s</font> or I<font size="1">d</font> for expression neutralization or motion injection
+            accordingly. The reenacted feature map is then concatenated with a detail feature map from another encoder E<font size="1">detail</font>, and sent to a decoder G<font size="1">T</font>
+            to synthesize a tri-plane T , bearing the appearance of I<font size="1">s</font> and the motion of I<font size="1">d</font>. With a FLAME-derived 3D deformation field D<font size="1">neck</font> to
+            handle neck pose and a volumetric renderer with 2D super-resolution, T can be rendered to a reenacted image I<font size="1">re</font> at an arbitrary viewpoint. A U-Net is further introduced to handle background synthesis.
+          </p>
+        </div>
+      </div>
+      <!--/ Architecture. -->
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <br>
+        <h2 class="title is-3">Results</h2>
+      </div>
+    </div>
+
+    <!-- Inpterpolation. -->
+    <div class="container is-max-desktop">
+      <div class="content has-text-justified">
+          <h2 class="title is-4">Motion and View Inpterpolation</h2>
+            <p>
+              Here is an interactive viewer allowing for interpolations between motions (i.e. expressions and neck poses) and camera viewpoints. Drag the
+              <span style="color: rgb(143, 170, 220)">blue cursor</span> around to change the attributes and observe the synthesized results in the middle.
+            </p>
+      </div>
+
+
+      <div class="columns is-centered">
+        <div class="column is-one-third has-text-centered">
+            <img src="./static/images/00841.png"
+            class="interpolation-image">
+            Input Image
+        </div>
+        <div class="column is-one-third has-text-centered">
+          <div class="hyper-grid-wrapper" style="margin-bottom: 6px;">
+            <div class="hyper-grid-rgb">
+              <img src="./static/images/00841_grid.jpg"  style="left: -1900%;">
+            </div>
+          </div>
+          Synthesized Head Avatar
+        </div>
+        <div class="column is-one-third">
+          <div class="hyper-space-wrapper has-text-centered">
+            <div class="hyper-space-axis">
+              <div class="hyper-space-outer">
+                <div class="hyper-space">
+                  <div class="hyper-space-cursor" style="transform: translate(0px, 0px);"></div>
+                </div>
+              </div>
+            </div>
+            Motion and View Coordinates
+            <br>
+            <small>(Linear interpolation between motions and camera viewpoints.)</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-one-third has-text-centered">
+            <img src="./static/images/00773.png" class="interpolation-image" >
+            Input Image
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <div class="hyper-grid-wrapper-shape" style="margin-bottom: 6px;">
+          <div class="hyper-grid-rgb-shape">
+            <img src="./static/images/00773_grid.jpg" style="left: -1900%;">
+          </div>
+        </div>
+      <div>
+        Synthesized Head Avatar
+      </div>
+      </div>
+      <div class="column is-one-third">
+        <div class="hyper-space-wrapper-shape has-text-centered">
+          <div class="hyper-space-axis-shape">
+            <div class="hyper-space-shape-outer">
+              <div class="hyper-space-shape">
+                <div class="hyper-space-cursor-shape" style="transform: translate(0px, 0px);"></div>
+              </div>
+            </div>
+          </div>
+          Motion and View Coordinates
+          <br>
+          <small>(Linear interpolation between motions and camera viewpoints.)</small>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!--/ Inpterpolation. -->
+
+    <!-- Geometry Visualization. -->
+    <br>
+    <div class="container is-max-desktop">
+      <div class="content has-text-justified">
+          <h2 class="title is-4">Geometry Visualization</h2>
+            <p>
+              We can extract geometries of the reconstructed head avatars via Marching Cubes thanks to the underlying 3D representation. 
+              The reasonable head geometries guarantee our strong 3D consistency under pose changes. 
+            </p>
+      </div>
+
+      <div class="columns is-centered">
+
+        <div class="column is-one-quarter has-text-centered">
+              <img src="./static/images/00351.png" class="interpolation-image" >
+              <img src="./static/images/00848.png" class="interpolation-image" >
+              <img src="./static/images/00558.png" class="interpolation-image" >
+        </div>
+        <div class="column is-one-quarter has-text-centered">
+          <img src="./static/images/s00351.png" class="interpolation-image" >
+          <img src="./static/images/s00848.png" class="interpolation-image" >
+          <img src="./static/images/s00558.png" class="interpolation-image" >
+        </div>
+        <div class="column is-one-quarter has-text-centered">
+          <img src="./static/images/00548.png" class="interpolation-image" >
+          <img src="./static/images/00653.png" class="interpolation-image" >
+          <img src="./static/images/00613.png" class="interpolation-image" >
+        </div>
+        <div class="column is-one-quarter has-text-centered">
+          <img src="./static/images/s00548.png" class="interpolation-image" >
+          <img src="./static/images/s00653.png" class="interpolation-image" >
+          <img src="./static/images/s00613.png" class="interpolation-image" >
+        </div>
+      </div>
+      <br>
+      <!--/ Geometry Visualization. -->
+
+      <!-- Comparisons. -->
+      <div class="container is-max-desktop">
+        <div class="content has-text-justified">
+            <h2 class="title is-4">Comparisons</h2>
+              <p>
+                We compare our method with state-of-the-art one-shot head avatar synthesis approaches. Our method yields better reconstruction fidelity and  
+                maintains more reasonable head geometries under large pose variations. Compared to previous 3D-based methods, we support full head motion 
+                control with neck pose included as well as background separation.
+              </p>
+        </div>
+
+      <div id="results-carousel" class="carousel-compare results-carousel">
+        <div class="item">
+          <video poster="" id="compare" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/compare.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/compare2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare3" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/compare3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare4" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/compare4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <br>
+      <br>
+      <!--/ Comparisons. -->
+
+      <!-- More Results. -->
+      <div class="container is-max-desktop">
+        <div class="content has-text-justified">
+            <h2 class="title is-4">More Results</h2>
+              <p>
+                We show more head synthesis results on monocular images. Our method synthesizes vivid talking heads of diverse identities.
+              </p>
+        </div>
+
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <video poster="" id="compare1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare3" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare4" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare7" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more7.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare5" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare6" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more6.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item">
+          <video poster="" id="compare8" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/more8.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!--/ More Results. -->
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{deng2023learning,
+  title     = {Learning One-Shot 4D Head Avatar Synthesis using Synthetic Data},
+  author    = {Deng, Yu and Wang, Duomin and Ren, Xiaohang and Chen, Xingyu and Wang, baoyuan},
+  journal   = {arXiv},
+  year      = {2023},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The website code was mainly borrowed from <a href="https://nerfies.github.io/">Nerfies</a> and <a hre="https://hypernerf.github.io/">HyperNeRF</a>. We thank the authors for sharing the templates.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
